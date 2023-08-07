@@ -1,3 +1,6 @@
+import time
+import turtle
+
 morse_code_dict = {
     'A': '.-',
     'B': '-...',
@@ -37,11 +40,30 @@ morse_code_dict = {
     '9': '----.',
     ' ': ' / ',  # Przerwa między słowami
 }
+mean = {
+    ".": 1,
+    "-": 2,
+    "/": 3
+}
+
+tim = turtle.Turtle()
+tim.penup()
+screen = turtle.Screen()
+screen.bgcolor("black")
+
+
+def show(l):
+    for i in l:
+        screen.bgcolor("white")
+        time.sleep(mean[i])
+        screen.bgcolor("black")
+        time.sleep(1)
+
 
 word = input("Podaj słowo do przetłumaczenia: ").upper()
 translate_word = ""
 
 for i in word:
     translate_word += morse_code_dict[i]+'   '
-w = translate_word[:-3]
-print(w)
+    show(morse_code_dict[i])
+    print(translate_word)
